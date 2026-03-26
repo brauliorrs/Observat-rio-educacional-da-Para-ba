@@ -1,4 +1,4 @@
-# Pipeline estadual (resumo executivo)
+﻿# Pipeline estadual (resumo executivo)
 
 ## Objetivo
 

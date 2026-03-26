@@ -1,4 +1,4 @@
-# Observatorio Educacional da Paraiba
+﻿# Observatorio Educacional da Paraiba
 
 ## SiSU Paraiba IFPB
 

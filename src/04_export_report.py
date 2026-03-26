@@ -1,4 +1,4 @@
-import argparse
+﻿import argparse
 import json
 from pathlib import Path
 
@@ -132,7 +132,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--processed", default="data/processed")
     parser.add_argument("--figdir", default="docs/paper/figuras")
-    parser.add_argument("--out", default="docs/paper/resumo_resultados_paraiba_ifpb_superiores_2017_2022.md")
+    parser.add_argument("--out", default="docs/paper/resumo_resultados_paraiba_ifpb_superiores_2017_2025.md")
     parser.add_argument("--top-n", type=int, default=15)
     parser.add_argument("--manifest", default="data/processed/study_manifest.json")
     args = parser.parse_args()

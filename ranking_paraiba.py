@@ -1,4 +1,4 @@
-import argparse
+﻿import argparse
 import os
 import subprocess
 import sys
@@ -40,7 +40,7 @@ def main() -> None:
     )
     parser.add_argument("--billing-project", help="Projeto de billing do BigQuery")
     parser.add_argument("--ano-ini", type=int, default=2017)
-    parser.add_argument("--ano-fim", type=int, default=2022)
+    parser.add_argument("--ano-fim", type=int, default=2025)
     parser.add_argument("--study-name", default="paraiba_ifpb_superiores")
     parser.add_argument("--study-label", default="Observatorio Educacional da Paraiba - municipios com IFPB")
     parser.add_argument("--municipio", help="Codigo IBGE de um municipio")

@@ -1,4 +1,4 @@
-import argparse
+﻿import argparse
 import os
 from pathlib import Path
 
@@ -40,11 +40,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--billing-project", help="Projeto de billing do BigQuery")
     parser.add_argument("--ano-ini", type=int, default=2017)
-    parser.add_argument("--ano-fim", type=int, default=2022)
+    parser.add_argument("--ano-fim", type=int, default=2025)
     parser.add_argument("--municipio", help="Codigo IBGE de um municipio")
     parser.add_argument("--municipios", help="Lista de codigos IBGE separada por virgula")
     parser.add_argument("--municipios-file", help="CSV de referencia com a coluna municipio_ibge")
-    parser.add_argument("--out", default="data/raw/sisu_paraiba_ifpb_superiores_2017_2022_agg.csv")
+    parser.add_argument("--out", default="data/raw/sisu_paraiba_ifpb_superiores_2017_2025_agg.csv")
     args = parser.parse_args()
 
     billing_project = (

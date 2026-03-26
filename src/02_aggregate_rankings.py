@@ -1,4 +1,4 @@
-import argparse
+﻿import argparse
 from pathlib import Path
 
 import pandas as pd
@@ -231,13 +231,13 @@ def save_outputs(outputs: dict[str, pd.DataFrame], outdir: Path, workbook_name: 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", default="data/raw/sisu_paraiba_ifpb_superiores_2017_2022_agg.csv")
+    parser.add_argument("--input", default="data/raw/sisu_paraiba_ifpb_superiores_2017_2025_agg.csv")
     parser.add_argument("--outdir", default="data/processed")
-    parser.add_argument("--workbook", default="relatorio_paraiba_ifpb_superiores_2017_2022.xlsx")
+    parser.add_argument("--workbook", default="relatorio_paraiba_ifpb_superiores_2017_2025.xlsx")
     parser.add_argument("--study-name", default="paraiba_ifpb_superiores")
     parser.add_argument("--study-label", default="Observatorio Educacional da Paraiba - municipios com IFPB")
     parser.add_argument("--ano-ini", type=int, default=2017)
-    parser.add_argument("--ano-fim", type=int, default=2022)
+    parser.add_argument("--ano-fim", type=int, default=2025)
     parser.add_argument("--metadata-file", default="data/reference/municipios_ifpb_pb.csv")
     parser.add_argument("--oferta-file", default="data/reference/oferta_superior_ifpb_pb.csv")
     parser.add_argument("--manifest", default="data/processed/study_manifest.json")
