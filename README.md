@@ -41,8 +41,15 @@ python -m venv .venv
 .venv\Scripts\activate
 
 pip install -r requirements.txt
-python ranking_paraiba.py --billing-project SEU_PROJETO_GCP
+python ranking_paraiba.py --billing-project SEU_PROJETO_REAL
 streamlit run dashboard/app.py
+```
+
+Voce tambem pode definir o projeto de billing por variavel de ambiente:
+
+```bash
+$env:BD_BILLING_PROJECT="seu-projeto-real"
+python ranking_paraiba.py
 ```
 
 ## Estudos disponiveis
@@ -54,9 +61,9 @@ voce pode informar manualmente os codigos de municipio.
 Exemplos:
 
 ```bash
-python ranking_paraiba.py --billing-project SEU_PROJETO_GCP
-python ranking_paraiba.py --billing-project SEU_PROJETO_GCP --study-name picui --study-label "Picui (PB)" --municipio 2511400
-python ranking_paraiba.py --billing-project SEU_PROJETO_GCP --municipios 2511400,2504009
+python ranking_paraiba.py --billing-project SEU_PROJETO_REAL
+python ranking_paraiba.py --billing-project SEU_PROJETO_REAL --study-name picui --study-label "Picui (PB)" --municipio 2511400
+python ranking_paraiba.py --billing-project SEU_PROJETO_REAL --municipios 2511400,2504009
 ```
 
 ## Oferta IFPB

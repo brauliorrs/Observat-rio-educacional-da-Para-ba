@@ -1,9 +1,13 @@
 import argparse
+import os
 from pathlib import Path
 
 import basedosdados as bd
 
 from study_config import parse_municipios, resolve_municipios
+
+
+PLACEHOLDERS = {"SEU_PROJETO_GCP", "MEU_PROJETO_GCP", "YOUR_GCP_PROJECT"}
 
 
 def build_query(ano_ini: int, ano_fim: int, municipios: list[str]) -> str:
@@ -34,7 +38,7 @@ def build_query(ano_ini: int, ano_fim: int, municipios: list[str]) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--billing-project", required=True, help="Projeto de billing do BigQuery")
+    parser.add_argument("--billing-project", help="Projeto de billing do BigQuery")
     parser.add_argument("--ano-ini", type=int, default=2017)
     parser.add_argument("--ano-fim", type=int, default=2022)
     parser.add_argument("--municipio", help="Codigo IBGE de um municipio")
@@ -42,6 +46,18 @@ def main() -> None:
     parser.add_argument("--municipios-file", help="CSV de referencia com a coluna municipio_ibge")
     parser.add_argument("--out", default="data/raw/sisu_paraiba_ifpb_superiores_2017_2022_agg.csv")
     args = parser.parse_args()
+
+    billing_project = (
+        args.billing_project
+        or os.getenv("BD_BILLING_PROJECT")
+        or os.getenv("GOOGLE_CLOUD_PROJECT")
+        or os.getenv("GCP_PROJECT")
+    )
+    if not billing_project or billing_project.strip() in PLACEHOLDERS:
+        raise ValueError(
+            "Use um projeto real de billing do BigQuery em --billing-project "
+            "ou nas variaveis BD_BILLING_PROJECT / GOOGLE_CLOUD_PROJECT."
+        )
 
     municipios = parse_municipios(args.municipios)
     if args.municipio:
@@ -51,7 +67,7 @@ def main() -> None:
     query = build_query(args.ano_ini, args.ano_fim, resolved)
 
     print("Executando consulta no BigQuery via basedosdados...")
-    df = bd.read_sql(query=query, billing_project_id=args.billing_project)
+    df = bd.read_sql(query=query, billing_project_id=billing_project.strip())
 
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
